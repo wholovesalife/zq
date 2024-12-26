@@ -1,0 +1,56 @@
+const std = @import("std");
+
+pub fn build(b: *std.Build) void {
+    const target = b.standardTargetOptions(.{});
+    const optimize = b.standardOptimizeOption(.{});
+
+    const exe = b.addExecutable(.{
+        .name = "zq",
+        .root_source_file = b.path("src/main.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    b.installArtifact(exe);
+
+    const run_cmd = b.addRunArtifact(exe);
+    run_cmd.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_cmd.addArgs(args);
+    }
+
+    const run_step = b.step("run", "Run zq");
+    run_step.dependOn(&run_cmd.step);
+
+    // Unit tests
+    const unit_tests = b.addTest(.{
+        .root_source_file = b.path("src/main.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    const run_unit_tests = b.addRunArtifact(unit_tests);
+
+    const test_step = b.step("test", "Run tests");
+    test_step.dependOn(&run_unit_tests.step);
+
+    // JSON parser tests
+    const json_tests = b.addTest(.{
+        .root_source_file = b.path("src/json.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    const run_json_tests = b.addRunArtifact(json_tests);
+    test_step.dependOn(&run_json_tests.step);
+
+    // Query tests
+    const query_tests = b.addTest(.{
+        .root_source_file = b.path("src/query.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    const run_query_tests = b.addRunArtifact(query_tests);
+    test_step.dependOn(&run_query_tests.step);
+}
