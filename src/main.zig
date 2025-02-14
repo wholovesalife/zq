@@ -11,11 +11,27 @@ pub fn main() !void {
     defer args.deinit();
     _ = args.next();
 
-    const q = args.next() orelse {
-        std.debug.print("usage: zq <query> [file]\n", .{});
+    var compact = false;
+    var raw = false;
+    var query_str: ?[]const u8 = null;
+    var file_path: ?[]const u8 = null;
+
+    while (args.next()) |arg| {
+        if (std.mem.eql(u8, arg, "-c")) {
+            compact = true;
+        } else if (std.mem.eql(u8, arg, "-r")) {
+            raw = true;
+        } else if (query_str == null) {
+            query_str = arg;
+        } else if (file_path == null) {
+            file_path = arg;
+        }
+    }
+
+    const q = query_str orelse {
+        std.debug.print("usage: zq [-c] [-r] <query> [file]\n", .{});
         std.process.exit(1);
     };
-    const file_path = args.next();
 
     const input: []const u8 = if (file_path) |path| blk: {
         const file = std.fs.cwd().openFile(path, .{}) catch |err| {
@@ -44,7 +60,13 @@ pub fn main() !void {
 
     const stdout = std.io.getStdOut().writer();
     for (results.items) |val| {
-        try printValue(stdout, val, false, 0);
+        if (raw) {
+            switch (val) {
+                .string => |s| { try stdout.print("{s}\n", .{s}); continue; },
+                else => {},
+            }
+        }
+        try printValue(stdout, val, compact, 0);
         try stdout.writeByte('\n');
     }
 }
@@ -60,7 +82,20 @@ fn printValue(writer: anytype, val: json.Value, compact: bool, depth: usize) !vo
                 try writer.print("{d}", .{n});
             }
         },
-        .string => |s| try writer.print("\"{s}\"", .{s}),
+        .string => |s| {
+            try writer.writeByte('"');
+            for (s) |c| {
+                switch (c) {
+                    '"' => try writer.writeAll("\\\""),
+                    '\\' => try writer.writeAll("\\\\"),
+                    '\n' => try writer.writeAll("\\n"),
+                    '\t' => try writer.writeAll("\\t"),
+                    '\r' => try writer.writeAll("\\r"),
+                    else => try writer.writeByte(c),
+                }
+            }
+            try writer.writeByte('"');
+        },
         .array => |a| {
             try writer.writeByte('[');
             for (a.items, 0..) |item, i| {
@@ -79,7 +114,9 @@ fn printValue(writer: anytype, val: json.Value, compact: bool, depth: usize) !vo
                 if (!first) try writer.writeByte(',');
                 first = false;
                 if (!compact) { try writer.writeByte('\n'); try writeIndent(writer, depth + 1); }
-                try writer.print("\"{s}\":{s}", .{ e.key_ptr.*, if (compact) "" else " " });
+                try writer.writeByte('"');
+                try writer.writeAll(e.key_ptr.*);
+                try writer.writeAll(if (compact) "\":" else "\": ");
                 try printValue(writer, e.value_ptr.*, compact, depth + 1);
             }
             if (!compact and m.count() > 0) { try writer.writeByte('\n'); try writeIndent(writer, depth); }
