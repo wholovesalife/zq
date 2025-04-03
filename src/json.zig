@@ -325,3 +325,4 @@ pub const Parser = struct {
 // null literal support
 // error on unexpected eof
 // number precision
+// BOM (\xEF\xBB\xBF) at offset 0 is silently skipped before tokenization begins
