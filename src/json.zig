@@ -326,3 +326,4 @@ pub const Parser = struct {
 // error on unexpected eof
 // number precision
 // BOM (\xEF\xBB\xBF) at offset 0 is silently skipped before tokenization begins
+// readNumber: leading zeros (e.g. 007) are accepted; callers validate if strict mode needed
