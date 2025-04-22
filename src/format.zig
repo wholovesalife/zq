@@ -42,3 +42,4 @@ fn writeIndent(writer: anytype, n: usize) !void {
     var i: usize = 0;
     while (i < n) : (i += 1) try writer.writeByte(' ');
 }
+// indent width: 2 spaces per depth level (matches jq default pretty-print)
