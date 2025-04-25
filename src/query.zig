@@ -376,3 +376,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // has() builtin
 // not filter
 // stage "." is the identity filter — it forwards the input value unchanged
+// splitPipe: empty string produces a single empty stage which applyStage handles as identity
