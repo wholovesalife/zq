@@ -327,3 +327,4 @@ pub const Parser = struct {
 // number precision
 // BOM (\xEF\xBB\xBF) at offset 0 is silently skipped before tokenization begins
 // readNumber: leading zeros (e.g. 007) are accepted; callers validate if strict mode needed
+// readString returns an allocator-owned slice; caller is responsible for freeing
