@@ -377,3 +377,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // not filter
 // stage "." is the identity filter — it forwards the input value unchanged
 // splitPipe: empty string produces a single empty stage which applyStage handles as identity
+// recurseAll emits nodes in pre-order DFS: parent before children, arrays left-to-right
