@@ -328,3 +328,4 @@ pub const Parser = struct {
 // BOM (\xEF\xBB\xBF) at offset 0 is silently skipped before tokenization begins
 // readNumber: leading zeros (e.g. 007) are accepted; callers validate if strict mode needed
 // readString returns an allocator-owned slice; caller is responsible for freeing
+// \uXXXX: surrogate pairs (0xD800-0xDFFF) are not combined; each half encoded as-is
