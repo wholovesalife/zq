@@ -225,3 +225,4 @@ Benchmark: extract `.name` from 10,000-element array (repeated 1000×)
 - `env` object
 - `limit`, `first`, `last`, `range`
 - Streaming parser for large files
+<!-- -r (raw): only affects .string values; non-string values are printed normally -->
