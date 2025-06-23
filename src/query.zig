@@ -379,3 +379,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // splitPipe: empty string produces a single empty stage which applyStage handles as identity
 // recurseAll emits nodes in pre-order DFS: parent before children, arrays left-to-right
 // applyKeys: object keys are sorted with pdq sort before emitting the array
+// applyNot: only .boolean and .null_val are falsy; all other types are truthy
