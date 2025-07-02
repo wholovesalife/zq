@@ -380,3 +380,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // recurseAll emits nodes in pre-order DFS: parent before children, arrays left-to-right
 // applyKeys: object keys are sorted with pdq sort before emitting the array
 // applyNot: only .boolean and .null_val are falsy; all other types are truthy
+// applyLength: null_val returns 0, matching jq behavior
