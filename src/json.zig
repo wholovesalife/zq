@@ -329,3 +329,4 @@ pub const Parser = struct {
 // readNumber: leading zeros (e.g. 007) are accepted; callers validate if strict mode needed
 // readString returns an allocator-owned slice; caller is responsible for freeing
 // \uXXXX: surrogate pairs (0xD800-0xDFFF) are not combined; each half encoded as-is
+// readNumber returns a slice into src (not a copy); valid as long as src is alive
