@@ -136,3 +136,4 @@ fn writeIndent(writer: anytype, depth: usize) !void {
 
 // appended by feat/version-flag patch
 pub const version = "0.3.0";
+// arena is deferred-deinit after all results are printed; no per-result frees needed
