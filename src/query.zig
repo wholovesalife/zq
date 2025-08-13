@@ -382,3 +382,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // applyNot: only .boolean and .null_val are falsy; all other types are truthy
 // applyLength: null_val returns 0, matching jq behavior
 // applyHas: trims surrounding whitespace and quotes from the key before lookup
+// splitPipe: depth counter ensures | inside [..] is not treated as a pipe separator
