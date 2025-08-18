@@ -330,3 +330,4 @@ pub const Parser = struct {
 // readString returns an allocator-owned slice; caller is responsible for freeing
 // \uXXXX: surrogate pairs (0xD800-0xDFFF) are not combined; each half encoded as-is
 // readNumber returns a slice into src (not a copy); valid as long as src is alive
+// parseObject: errdefer iterates partial map and frees all keys and values on parse failure
