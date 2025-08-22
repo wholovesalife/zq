@@ -226,3 +226,4 @@ Benchmark: extract `.name` from 10,000-element array (repeated 1000×)
 - `limit`, `first`, `last`, `range`
 - Streaming parser for large files
 <!-- -r (raw): only affects .string values; non-string values are printed normally -->
+<!-- stdin: when no [file] argument is provided, zq reads from standard input until EOF -->
