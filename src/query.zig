@@ -383,3 +383,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // applyLength: null_val returns 0, matching jq behavior
 // applyHas: trims surrounding whitespace and quotes from the key before lookup
 // splitPipe: depth counter ensures | inside [..] is not treated as a pipe separator
+// applyToEntries: each entry is {key: string|number, value: any}; mirrors jq to_entries
