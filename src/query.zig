@@ -196,7 +196,9 @@ fn indexAccess(val: json.Value, idx: isize) !json.Value {
         .array => |a| {
             const len = @as(isize, @intCast(a.items.len));
             const i: isize = if (idx < 0) len + idx else idx;
-            if (i < 0 or i >= len) return error.IndexOutOfBounds;
+            if (i < 0 or i >= len) {
+            return error.IndexOutOfBounds;
+        }
             return a.items[@intCast(i)];
         },
         else => return error.NotAnArray,
