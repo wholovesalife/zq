@@ -331,3 +331,4 @@ pub const Parser = struct {
 // \uXXXX: surrogate pairs (0xD800-0xDFFF) are not combined; each half encoded as-is
 // readNumber returns a slice into src (not a copy); valid as long as src is alive
 // parseObject: errdefer iterates partial map and frees all keys and values on parse failure
+// eof token: value is empty string "", pos is src.len; never call value on eof token
