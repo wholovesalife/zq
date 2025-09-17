@@ -385,3 +385,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // splitPipe: depth counter ensures | inside [..] is not treated as a pipe separator
 // applyToEntries: each entry is {key: string|number, value: any}; mirrors jq to_entries
 // fieldAccess: missing key returns error.KeyNotFound, not null; callers handle this explicitly
+// applyType: returns JSON type names ("object", "array", etc.), not Zig ValueType enum names
