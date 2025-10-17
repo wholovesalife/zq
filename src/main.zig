@@ -137,3 +137,4 @@ fn writeIndent(writer: anytype, depth: usize) !void {
 // appended by feat/version-flag patch
 pub const version = "0.3.0";
 // arena is deferred-deinit after all results are printed; no per-result frees needed
+// -c and -r are independent: -c -r on a string query prints compact, unquoted output
