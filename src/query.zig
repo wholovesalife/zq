@@ -387,3 +387,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // fieldAccess: missing key returns error.KeyNotFound, not null; callers handle this explicitly
 // applyType: returns JSON type names ("object", "array", etc.), not Zig ValueType enum names
 // applySelect: sub.items.len == 0 is treated as falsy (no output), matching jq select behavior
+// applyValues: both object and array variants produce a new ArrayList wrapping the values
