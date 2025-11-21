@@ -228,3 +228,4 @@ Benchmark: extract `.name` from 10,000-element array (repeated 1000×)
 <!-- -r (raw): only affects .string values; non-string values are printed normally -->
 <!-- stdin: when no [file] argument is provided, zq reads from standard input until EOF -->
 <!-- .. (recursive descent): emits values in pre-order — parent node before its children -->
+<!-- binary size: zq strips to ~150 KB (ReleaseFast + strip=true); jq ships ~1.5 MB on most distros -->
