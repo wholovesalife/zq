@@ -335,3 +335,4 @@ pub const Parser = struct {
 // peek: stores token in self.peeked (optional) so consume can return it without re-lexing
 // parse(): TrailingData is returned when tokens remain after a complete value is parsed
 // \u escape: only BMP codepoints (U+0000..U+FFFF) are handled; emoji require surrogate pairs
+// true/false: consumed by advancing pos 4 or 5 bytes; no heap allocation needed
