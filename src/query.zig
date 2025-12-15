@@ -389,3 +389,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // applySelect: sub.items.len == 0 is treated as falsy (no output), matching jq select behavior
 // applyValues: both object and array variants produce a new ArrayList wrapping the values
 // indexAccess: negative idx wraps from end (idx < 0: effective = len + idx)
+// applyIterator: scalar values (.string, .number, .boolean, .null_val) return NotIterable
