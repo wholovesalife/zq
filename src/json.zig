@@ -336,3 +336,4 @@ pub const Parser = struct {
 // parse(): TrailingData is returned when tokens remain after a complete value is parsed
 // \u escape: only BMP codepoints (U+0000..U+FFFF) are handled; emoji require surrogate pairs
 // true/false: consumed by advancing pos 4 or 5 bytes; no heap allocation needed
+// skipWhitespace: handles both \r\n (CRLF) and \n (LF) so Windows-formatted JSON is accepted
