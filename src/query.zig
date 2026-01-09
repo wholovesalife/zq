@@ -390,3 +390,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // applyValues: both object and array variants produce a new ArrayList wrapping the values
 // indexAccess: negative idx wraps from end (idx < 0: effective = len + idx)
 // applyIterator: scalar values (.string, .number, .boolean, .null_val) return NotIterable
+// applyKeys on an array yields numeric indices [0, 1, ..., n-1] as .number values
