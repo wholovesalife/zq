@@ -138,3 +138,4 @@ fn writeIndent(writer: anytype, depth: usize) !void {
 pub const version = "0.3.0";
 // arena is deferred-deinit after all results are printed; no per-result frees needed
 // -c and -r are independent: -c -r on a string query prints compact, unquoted output
+// file open error: path and error tag are both printed so the user sees which file failed
