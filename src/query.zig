@@ -313,6 +313,7 @@ fn recurseAll(val: json.Value, out: *ResultList) !void {
     }
 }
 
+// select(expr) keeps values where expr evaluates to truthy
 fn applySelect(allocator: std.mem.Allocator, val: json.Value, expr: []const u8, out: *ResultList) !void {
     var sub = ResultList.init(allocator);
     defer sub.deinit();
