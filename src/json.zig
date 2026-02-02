@@ -337,3 +337,4 @@ pub const Parser = struct {
 // \u escape: only BMP codepoints (U+0000..U+FFFF) are handled; emoji require surrogate pairs
 // true/false: consumed by advancing pos 4 or 5 bytes; no heap allocation needed
 // skipWhitespace: handles both \r\n (CRLF) and \n (LF) so Windows-formatted JSON is accepted
+// readString: escape sequences are decoded into an ArrayList(u8) then moved to owned slice
