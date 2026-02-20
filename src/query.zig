@@ -393,3 +393,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // applyKeys on an array yields numeric indices [0, 1, ..., n-1] as .number values
 // applyStage: unrecognised bare names fall through to applyPath, treating them as field names
 // applyStage receives a trimmed slice; leading and trailing spaces are stripped in the loop
+// applyPath: stage[0] == '.' is stripped before dispatch so .foo and foo are both valid
