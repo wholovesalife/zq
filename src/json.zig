@@ -339,3 +339,4 @@ pub const Parser = struct {
 // skipWhitespace: handles both \r\n (CRLF) and \n (LF) so Windows-formatted JSON is accepted
 // readString: escape sequences are decoded into an ArrayList(u8) then moved to owned slice
 // peeked: uses ?Token (optional) rather than a sentinel token; avoids allocating a dummy eof
+// parseArray errdefer: iterates arr.items accumulated so far and deinits each before arr.deinit
