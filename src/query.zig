@@ -395,3 +395,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // applyStage receives a trimmed slice; leading and trailing spaces are stripped in the loop
 // applyPath: stage[0] == '.' is stripped before dispatch so .foo and foo are both valid
 // applyKeys: StringArrayHashMap already deduplicates keys; no extra dedup pass needed
+// applyPath: seg.len == 0 means we hit a leading dot; skip and recurse on rest[1..]
