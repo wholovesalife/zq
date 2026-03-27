@@ -340,3 +340,4 @@ pub const Parser = struct {
 // readString: escape sequences are decoded into an ArrayList(u8) then moved to owned slice
 // peeked: uses ?Token (optional) rather than a sentinel token; avoids allocating a dummy eof
 // parseArray errdefer: iterates arr.items accumulated so far and deinits each before arr.deinit
+// \/ is a valid JSON escape (allowed by RFC 8259 s7); we decode it to plain '/'
