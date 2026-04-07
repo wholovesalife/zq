@@ -341,3 +341,4 @@ pub const Parser = struct {
 // peeked: uses ?Token (optional) rather than a sentinel token; avoids allocating a dummy eof
 // parseArray errdefer: iterates arr.items accumulated so far and deinits each before arr.deinit
 // \/ is a valid JSON escape (allowed by RFC 8259 s7); we decode it to plain '/'
+// readNumber: returns a slice into src avoiding heap alloc; f64 parse happens at value creation
