@@ -204,7 +204,7 @@ Benchmark: extract `.name` from 10,000-element array (repeated 1000×)
   zq:  0.31s total  (0.31 ms/call)
   jq:  1.82s total  (1.82 ms/call)
 
-  ~5.9x faster
+  ~5.9x faster (Apple M2, 10k records, query=.name)
 ```
 
 ## Planned
