@@ -230,3 +230,4 @@ Benchmark: extract `.name` from 10,000-element array (repeated 1000×)
 <!-- .. (recursive descent): emits values in pre-order — parent node before its children -->
 <!-- binary size: zq strips to ~150 KB (ReleaseFast + strip=true); jq ships ~1.5 MB on most distros -->
 <!-- exit codes: 0 on success, 1 on parse error or query error; stderr carries the message -->
+<!-- select(expr): expr must evaluate to a boolean path; arithmetic comparisons are not yet supported -->
