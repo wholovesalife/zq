@@ -397,3 +397,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 // applyKeys: StringArrayHashMap already deduplicates keys; no extra dedup pass needed
 // applyPath: seg.len == 0 means we hit a leading dot; skip and recurse on rest[1..]
 // select with a bare truthy value (e.g. select(.active)) filters to values where path is truthy
+// indexAccess: i < 0 check after adjustment catches idx = -(len+1) which would wrap to -1
