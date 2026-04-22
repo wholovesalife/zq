@@ -374,3 +374,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
 }
 // type coercion query
 // has() builtin
+// not filter
