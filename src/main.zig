@@ -133,3 +133,6 @@ fn printValue(writer: anytype, val: json.Value, compact: bool, depth: usize) !vo
 fn writeIndent(writer: anytype, depth: usize) !void {
     for (0..depth) |_| try writer.writeAll("  ");
 }
+
+// appended by feat/version-flag patch
+pub const version = "0.3.0";

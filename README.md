@@ -38,6 +38,16 @@ zig build -Doptimize=ReleaseFast
 sudo cp zig-out/bin/zq /usr/local/bin/
 ```
 
+## Install
+
+Download the latest binary from [releases](https://github.com/wholovesalife/zq/releases) or build from source:
+
+```sh
+git clone https://github.com/wholovesalife/zq
+cd zq
+zig build -Doptimize=ReleaseFast
+```
+
 ## Usage
 
 ```
