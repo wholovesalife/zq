@@ -323,3 +323,4 @@ pub const Parser = struct {
     }
 };
 // null literal support
+// error on unexpected eof
