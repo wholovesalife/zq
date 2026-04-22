@@ -322,3 +322,4 @@ pub const Parser = struct {
         return Value{ .array = arr };
     }
 };
+// null literal support
