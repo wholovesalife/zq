@@ -373,3 +373,4 @@ fn applyToEntries(allocator: std.mem.Allocator, val: json.Value, out: *ResultLis
     try out.append(json.Value{ .array = arr });
 }
 // type coercion query
+// has() builtin
